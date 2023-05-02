@@ -14,10 +14,14 @@ public class PlayerControllerX : MonoBehaviour
 
     private float normalStrength = 10; // how hard to hit enemy without powerup
     private float powerupStrength = 25; // how hard to hit enemy with powerup
+
+    private ParticleSystem particleSystem;
     
     void Start()
     {
         playerRb = GetComponent<Rigidbody>();
+        particleSystem = GetComponent<ParticleSystem>();
+        particleSystem.Stop();
         focalPoint = GameObject.Find("Focal Point");
     }
 
@@ -25,7 +29,17 @@ public class PlayerControllerX : MonoBehaviour
     {
         // Add force to player in direction of the focal point (and camera)
         float verticalInput = Input.GetAxis("Vertical");
-        playerRb.AddForce(focalPoint.transform.forward * verticalInput * speed * Time.deltaTime); 
+
+        float currentSpeed;
+        if (Input.GetKey(KeyCode.Space)) {
+            currentSpeed = speed * 5f;
+            particleSystem.Play();
+        }
+        else {
+            currentSpeed = speed;
+            particleSystem.Stop();
+        }
+        playerRb.AddForce(focalPoint.transform.forward * verticalInput * currentSpeed * Time.deltaTime); 
 
         // Set powerup indicator position to beneath player
         powerupIndicator.transform.position = transform.position + new Vector3(0, -0.6f, 0);
