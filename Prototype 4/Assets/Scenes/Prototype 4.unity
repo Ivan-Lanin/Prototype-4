@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d2aee54662cfe641bdf4a162387fcb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 75
+  rotationSpeed: 100
 --- !u!4 &43199523
 Transform:
   m_ObjectHideFlags: 0
@@ -263,9 +263,10 @@ GameObject:
   - component: {fileID: 305194152}
   - component: {fileID: 305194151}
   - component: {fileID: 305194156}
+  - component: {fileID: 305194157}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -318,7 +319,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 65960bb4d9a1fa84aaa7549a8bbd98ef, type: 2}
+  - {fileID: 2100000, guid: e6e6f7a3c9f4839409af1eae15839382, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -376,6 +377,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 30
   powerupIndicator: {fileID: 1802130945}
+--- !u!114 &305194157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 305194150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90e5b8ceaa2400d42893e20ef0a4ea0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: 8004078262100386565, guid: 525a25b3c921ffe448219add85410db9, type: 3}
 --- !u!1001 &598872068
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -738,7 +752,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccde79ce996d4f242ae272e1cd28385d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 6189997274455312893, guid: 40458caa7fe8b4a4588f5aa972fe1453, type: 3}
+  enemyPrefab:
+  - {fileID: 6189997274455312893, guid: 40458caa7fe8b4a4588f5aa972fe1453, type: 3}
+  - {fileID: 7600153894845105685, guid: 8801a40ab0d88fb4e8630ccecd284d93, type: 3}
+  onSpawn:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 305194157}
+        m_TargetAssemblyTypeName: PlayerShotgun, Assembly-CSharp
+        m_MethodName: LookForEnemyes
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   powerupPrefab: {fileID: 3012617689598809041, guid: a7dc0009ab695464cb866161c30d3b9e, type: 3}
 --- !u!4 &1547853394
 Transform:
