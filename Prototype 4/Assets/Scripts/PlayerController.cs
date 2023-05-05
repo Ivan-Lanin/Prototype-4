@@ -11,15 +11,14 @@ public class PlayerController : MonoBehaviour
     private bool hasPowerup = false;
     private float powerupStrength = 15f;
 
-    // Start is called before the first frame update
     void Start()
     {
         playerRb = GetComponent<Rigidbody>();
         focalPoint = GameObject.Find("Focal Point");
     }
 
-    // Update is called once per frame
-    void Update()
+
+    void FixedUpdate()
     {
         float forwardInput = Input.GetAxis("Vertical");
         if (forwardInput != 0) {
@@ -27,6 +26,7 @@ public class PlayerController : MonoBehaviour
         }
         powerupIndicator.transform.position = transform.position + new Vector3(0, -0.5f, 0);
     }
+
 
     private void OnTriggerEnter(Collider other) {
         if (other.CompareTag("Powerup") && !hasPowerup) {
