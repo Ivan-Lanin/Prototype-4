@@ -25,9 +25,6 @@ public class PlayerSmash : MonoBehaviour
             smashing = true;
             StartCoroutine(Smash());
         }
-        if (smashing) {
-            Debug.Log("Update");
-        }
     }
 
 
